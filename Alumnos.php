@@ -16,7 +16,7 @@
     <link href="vendors/form-helpers/css/bootstrap-formhelpers.min.css" rel="stylesheet">
     <link href="vendors/select/bootstrap-select.min.css" rel="stylesheet">
     <link href="vendors/tags/css/bootstrap-tags.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="css/forms.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,29 +50,9 @@
 
     <div class="page-content">
     	<div class="row">
-		  <div class="col-md-2">
-		  	<div class="sidebar content-box" style="display: block;">
-                <ul class="nav">
-                    <!-- Main menu -->
-                    <li><a href="inicio.php"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="calendar.php"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
-                    <li><a href="stats.php"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-                    <li><a href="tables.php"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
-                    <li><a href="buttons.php"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
-                    <li><a href="editors.php"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
- 
-                    <li class="current"><a href="Pagos.php"><i class="glyphicon glyphicon-tasks"></i> Consultar Pagos</a></li>
-
-                    <li class="current"><a href="RegistrarProfesores.php"><i class="glyphicon glyphicon-tasks"></i> Registrar Profesores</a></li>              
-                    <li class="current"><a href="Profesores.php"><i class="glyphicon glyphicon-tasks"></i> Consultar Profesores</a></li>                                  
-
-                    <li class="current"><a href="Alumnos.php"><i class="glyphicon glyphicon-tasks"></i>Alumnos</a></li>
-                    <li class="current"><a href="Encabezados.php"><i class="glyphicon glyphicon-tasks"></i>Encabezados</a></li>  
-                    <li class="current"><a href="Grupos.php"><i class="glyphicon glyphicon-tasks"></i>Grupos</a></li>  
-
-                </ul>
-             </div>
-		  </div>
+       <?php 
+			 include ('uses/Administracion/slide-bar.php'); 
+		  ?>
 		  <div class="col-md-10">
             <form>
             <div class="col-md-7">
@@ -80,6 +60,7 @@
             </div>
             <div class="col-md-3">
                 <button type="button" class="btn btn-primary">Buscar</button>
+                <a href="RegistrarAlumno.php" class="btn btn-primary">Agregar Alumno</a>
             </div>
 
     </form>
@@ -165,7 +146,19 @@
 
     <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-
+   
+   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+   <script>
+      <?php
+         if ($_GET['m']!=null && $_GET['e']!=null) {
+            if ($_GET['e']==1) {
+               echo "toastr.error('".$_GET['m']."','Error');";
+            }else{
+               echo "toastr.info('".$_GET['m']."','Info');";
+            }
+         }
+      ?>
+   </script>
     <script src="js/custom.js"></script>
     <script src="js/forms.js"></script>
 

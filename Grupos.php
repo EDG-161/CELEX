@@ -50,29 +50,9 @@
 
     <div class="page-content">
     	<div class="row">
-		  <div class="col-md-2">
-		  	<div class="sidebar content-box" style="display: block;">
-                <ul class="nav">
-                    <!-- Main menu -->
-                    <li><a href="inicio.php"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="calendar.php"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
-                    <li><a href="stats.php"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
-                    <li><a href="tables.php"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
-                    <li><a href="buttons.php"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
-                    <li><a href="editors.php"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
-
-                    <li class="current"><a href="Pagos.php"><i class="glyphicon glyphicon-tasks"></i> Consultar Pagos</a></li>
-
-                    <li class="current"><a href="RegistrarProfesores.php"><i class="glyphicon glyphicon-tasks"></i> Registrar Profesores</a></li>    
-                    <li class="current"><a href="Profesores.php"><i class="glyphicon glyphicon-tasks"></i> Consultar Profesores</a></li>                                  
-
-                    <li class="current"><a href="Alumnos.php"><i class="glyphicon glyphicon-tasks"></i>Alumnos</a></li>
-                    <li class="current"><a href="Encabezados.php"><i class="glyphicon glyphicon-tasks"></i>Encabezados</a></li>                      
-                    <li class="current"><a href="Grupos.php"><i class="glyphicon glyphicon-tasks"></i>Grupos</a></li>                      
-                              
-                </ul>
-             </div>
-		  </div>
+      <?php 
+			 include ('uses/Administracion/slide-bar.php'); 
+		  ?>
 		  <div class="col-md-10">
             <!-- Search form -->
 
@@ -109,8 +89,7 @@
                         $r = [];
                         $r['nombre'] = "Sin profesor";
                         foreach($p as $ps){
-                            if($ps['id_grupo']==$p['id_grupo'])
-                            {
+                            if($ps['id_grupo']==$d['id_grupo']) {
                                 $r=$ps;
                                   
                             }

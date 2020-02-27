@@ -71,13 +71,37 @@ if(isset($_POST['ApPat'])){
     
     $Emergencia = [$nombreEmer,$apPatEmer,$apMatEmer,$parentezco,$celularEmer];
     
-    $registro = agregarAlumno($user,$contacto,$direccion,$Examen,$infoAc,$Emergencia);
+
+    if (validarNombreAlumno($nombre,$apellidoPaterno,$apellidoMaterno)) {
+        //$registro = agregarAlumno($user,$contacto,$direccion,$Examen,$infoAc,$Emergencia);    
+    }else{
+        header('Location: /CELEX/Alumnos.php?e=1&m=El alumno esta registrado');
+    }
     
     
 }
 
 function AsignarGrupo(){
     //Esto estará cuando haga el registro de grupos.
+}
+
+function validarNombreAlumno($nombre, $apellidoPaterno, $apellidoMaterno){
+    $alumnos = getAllAlumnos($nombre);
+    if($alumnos != null){
+        foreach ($alumnos as $alu) {
+            echo strcmp($alu['Nombre'],$nombre). strcmp($alu['apep'],$apellidoPaterno) . strcmp($alu['apem'],$apellidoMaterno);
+            echo $alu['Nombre']. $alu['apep'].$alu['apem'];
+            if (strcmp($alu['Nombre'],$nombre)==0 && strcmp($alu['apep'],$apellidoPaterno)==0 && strcmp($alu['apem'],$apellidoMaterno)==0) {
+                
+                return false;
+                break;
+            }
+        }
+        return true;
+    }else{
+        return false;
+    }
+
 }
 
 function vefAlumnos($boleta){//Verifica que la boleta generada no exista

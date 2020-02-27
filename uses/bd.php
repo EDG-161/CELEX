@@ -43,13 +43,8 @@ function agregarAlumno($user,$contacto,$direccion,$Examen,$infoAc,$Emergencia){
     
     $emrsql = "INSERT INTO mcontactoemergencia (boleta, nombre, appat, apmat, paren, celularemer) values('".$user[5]."','".$Emergencia[0]."','".$Emergencia[1]."','".$Emergencia[2]."','".$Emergencia[3]."','".$Emergencia[4]."')";
     
-    echo $dirSQL."<br>";
-    echo $sql."<br>";
-    echo $consql."<br>";
-    echo $emrsql."<br>";
-
     if ($conn->query($dirSQL) === TRUE && $conn->query($sql) === TRUE && $conn->query($consql) === TRUE && $conn->query($emrsql) === TRUE) {
-        echo "Registrado";
+        header('Location: /CELEX/Alumnos.php');
     } else {
         echo "ha habido un error";
     }
@@ -182,7 +177,6 @@ function getGrupos(){
     $conn = Conn();
     
     $sql = "SELECT * FROM `mgrupos`";
-    echo $sql;
     return $conn->query($sql);
 }
 
