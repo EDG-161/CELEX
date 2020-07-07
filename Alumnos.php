@@ -53,58 +53,54 @@
        <?php 
 			 include ('uses/Administracion/slide-bar.php'); 
 		  ?>
-		  <div class="col-md-10">
+         <div class="col-md-10">
             <form>
-            <div class="col-md-7">
-                <input class="form-control" type="text" placeholder="Buscar" aria-label="Search">
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-primary">Buscar</button>
-                <a href="RegistrarAlumno.php" class="btn btn-primary">Agregar Alumno</a>
-            </div>
-
-    </form>
-		<table class="table table-hover">
-			 	 <thead>
-			    	<tr>
-				      	<th scope="col"><a onclick="AcomodarporPaterno();">Apellido Paterno </a></th>
-				      	<th scope="col">Apellido Materno</th>
-			      		<th scope="col">Nombre</th>
-			      		<th scope="col">Grupo</th>
-		      			<th scope="col">Nivel</th>
-		      			<th scope="col">opciones</th>
-			    	</tr>
-			  	</thead>
-			  	<tbody>
-			  		<?php  
+               <div class="col-md-7">
+                  <input class="form-control" type="text" placeholder="Buscar" aria-label="Search">
+               </div>
+               <div class="col-md-3">
+                  <button type="button" class="btn btn-primary">Buscar</button>
+                  <a href="RegistrarAlumno.php" class="btn btn-primary">Agregar Alumno</a>
+               </div>
+            </form>
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+               <table class="table table-hover">
+                  <thead>
+                     <tr>
+                           <th scope="col"><a onclick="AcomodarporPaterno();">Apellido Paterno </a></th>
+                           <th scope="col">Apellido Materno</th>
+                           <th scope="col">Nombre</th>
+                           <th scope="col">Grupo</th>
+                           <th scope="col">Nivel</th>
+                           <th scope="col">opciones</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <?php  
                         include 'uses/bd.php';
                         $alumnos = getAllAlumnos('all');
-                    
-                    if($alumnos!= null){
-                        foreach($alumnos as $alumno){
-                        ?>
+                        
+                        if($alumnos!= null){
+                           foreach($alumnos as $alumno){
+                           ?>
                         <tr>
-							<td><?php echo $alumno['apep']; ?></td>
-							<td><?php echo $alumno['apem']; ?></td>
-							<td><?php echo $alumno['Nombre']; ?></td>
-							<td><?php echo getGrupo($alumno['id_grupo'])['plantel']; ?></td>
-							<td><?php echo getGrupo($alumno['id_grupo'])['nivel']; ?></td>
-							<td><a href="Alumno.php?b=<?php echo $alumno['bol_alu']; ?>"><img src="images/Actualizar.png" width="20"></a><img src="images/basura.png" width="20"><img src="images/informe.png" width="20"></td>
-
-						</tr>
-                        <?php  
+                           <td><?php echo $alumno['apep']; ?></td>
+                           <td><?php echo $alumno['apem']; ?></td>
+                           <td><?php echo $alumno['Nombre']; ?></td>
+                           <td><?php echo getGrupo($alumno['id_grupo'])['plantel']; ?></td>
+                           <td><?php echo getGrupo($alumno['id_grupo'])['nivel']; ?></td>
+                           <td><a href="Alumno.php?b=<?php echo $alumno['bol_alu']; ?>"><img src="images/Actualizar.png" width="20"></a><img src="images/basura.png" width="20"><img src="images/informe.png" width="20"></td>
+                        </tr>
+                     <?php  
+                           }
                         }
-                    }
-                    ?>
-						
-				</tbody>
-		</table>
-	</div>
-	  		
-
-
-
-
+                     ?>
+                        
+                  </tbody>
+               </table>
+            </div>
+	      </div>
 	  		<!--  Page content -->
 		  </div>
 		</div>
